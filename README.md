@@ -179,4 +179,10 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 ---
 
+## Live Application
+
+Try the live application here: [Titanic Survival Predictor App](https://titanic-survival-predictor-zvf5nhdj2vpmdcuaqbtwaz.streamlit.app/)
+
+The app is hosted on Streamlit Cloud and allows you to make real-time predictions by inputting passenger information.
+
 **Last Updated**: December 2025
