@@ -1,188 +1,46 @@
-# Titanic-Survival-Predictor
+# Titanic Survival Predictor
 
-## Overview
+A machine-learning learning project that estimates Titanic passenger survival probability using a scikit-learn classification workflow and a Streamlit interface.
 
-Titanic Survival Predictor is a machine learning web application that predicts the survival probability of Titanic passengers using logistic regression. Built with Python, scikit-learn, and Streamlit, this project demonstrates a complete ML workflow from data exploration to interactive prediction interface.
+## Project Overview
+The project covers data preparation, exploratory analysis, model training, evaluation, and interactive predictions from passenger attributes.
 
-## Features
+## Features Documented
+- Missing-value handling with `SimpleImputer`
+- Categorical feature encoding
+- Exploratory plots and statistical summaries
+- Logistic Regression classification
+- Evaluation using accuracy, precision, recall, F1-score, and ROC analysis
+- Streamlit interface for entering passenger attributes and viewing a prediction
 
-✅ **Data Processing**
-- Data cleaning and preprocessing of Titanic dataset
-- Handling missing values with SimpleImputer
-- Feature encoding using LabelEncoder for categorical variables
+## Technology
+- Python
+- pandas and NumPy
+- scikit-learn
+- Matplotlib and Seaborn
+- Streamlit
 
-✅ **Exploratory Data Analysis**
-- Comprehensive EDA with visualizations (pairplots, boxplots, heatmaps)
-- Statistical analysis of passenger features
-- Distribution analysis of target variable (survival)
+Confirm exact dependencies from the project files before installing.
 
-✅ **Machine Learning Model**
-- Logistic Regression classifier from scikit-learn
-- Model training on Titanic training dataset
-- Model performance evaluation (Accuracy, Precision, Recall, F1-Score, ROC Curve)
-- Feature importance analysis
+## Run Locally
+1. Clone this repository and enter its directory.
+2. Create and activate a virtual environment.
+3. Install the dependencies listed in the repository (add a `requirements.txt` if missing).
+4. Check the notebook for the intended training and preprocessing workflow.
+5. Run the app with `streamlit run app.py` if `app.py` is present and configured.
 
-✅ **Web Application**
-- Interactive Streamlit web app for real-time predictions
-- User-friendly form to input passenger details
-- Instant survival prediction with probability score
-- Visual feedback with prediction status and probability bar chart
+## Evaluation Checklist
+- Split data before fitting preprocessing steps.
+- Fit imputers and encoders on training data only.
+- Compare with a simple baseline.
+- Report metrics from a held-out test set.
+- Check that the saved model and app use the same feature order and preprocessing.
 
-## Project Structure
+## Skills Demonstrated
+Classification, preprocessing, EDA, model evaluation, model serialization, and building a simple ML interface.
 
-```
-Titanic-Survival-Predictor/
-├── Titanic Survival Predictor.ipynb    # Complete ML pipeline notebook
-├── app.py                              # Streamlit web application
-├── model.pkl                           # Trained logistic regression model
-├── Titanic_train.csv                   # Training dataset
-├── Titanic_test.csv                    # Test dataset
-├── README.md                           # Project documentation
-└── LICENSE                             # MIT License
-```
+## Limitations
+This is a historical educational dataset. Predictions are demonstrations of a model, not causal explanations of survival or a generalizable safety tool.
 
-### Key Files
-
-- **Titanic Survival Predictor.ipynb**: Jupyter notebook containing:
-  - Data loading and exploration
-  - Feature engineering and preprocessing
-  - Model training and evaluation
-  - Model serialization (saved as model.pkl)
-
-- **app.py**: Streamlit application featuring:
-  - Input form for passenger details (Class, Sex, Age, SibSp, Parch, Fare, Embarked)
-  - Real-time survival predictions
-  - Probability visualization
-  - Interactive user interface
-
-## Installation
-
-### Requirements
-
-- Python 3.7 or higher
-- pip (Python package manager)
-
-### Required Libraries
-
-```bash
-pandas
-numpy
-matplotlib
-seaborn
-scikit-learn
-streamlit
-joblib
-```
-
-### Setup Instructions
-
-1. **Clone the repository**
-
-```bash
-git clone https://github.com/sahil2003-ai/Titanic-Survival-Predictor.git
-cd Titanic-Survival-Predictor
-```
-
-2. **Install dependencies**
-
-```bash
-pip install pandas numpy matplotlib seaborn scikit-learn streamlit joblib
-```
-
-3. **Prepare the data** (Optional - for retraining the model)
-
-- Ensure `Titanic_train.csv` and `Titanic_test.csv` are in the working directory
-- Run all cells in the Jupyter notebook to retrain and save the model
-
-## Usage
-
-### Running the Web Application
-
-```bash
-streamlit run app.py
-```
-
-The application will open in your default browser at `localhost:8501`
-
-### Making Predictions
-
-1. Fill in the passenger details in the Streamlit form:
-   - **Class (Pclass)**: Passenger class (1, 2, or 3)
-   - **Sex**: Gender (Male or Female)
-   - **Age**: Passenger age (0-80)
-   - **SibSp**: Number of siblings/spouses (0-10)
-   - **Parch**: Number of parents/children (0-10)
-   - **Fare**: Ticket fare (0.0-600.0)
-   - **Embarked**: Port of embarkation (S=Southampton, C=Cherbourg, Q=Queenstown)
-
-2. Click the **"Predict Survival"** button
-
-3. View the prediction results:
-   - Survival status ("Survived" or "Not Survived")
-   - Survival probability (0-100%)
-   - Visual probability bar chart
-
-## Model Details
-
-### Algorithm
-- **Type**: Logistic Regression (Binary Classification)
-- **Library**: scikit-learn
-
-### Features Used
-- Pclass (Passenger Class)
-- Sex (Categorical, encoded)
-- Age
-- SibSp (Siblings/Spouses)
-- Parch (Parents/Children)
-- Fare (Ticket Price)
-- Embarked (Port, encoded)
-
-### Preprocessing Pipeline
-- **Categorical Encoding**: LabelEncoder transforms Sex and Embarked to numeric values
-- **Missing Value Handling**: SimpleImputer fills missing Age and Embarked values
-
-### Model Performance
-- **Training Accuracy**: ~80%
-- **Feature Importance**: Available in the Jupyter notebook
-- **Evaluation Metrics**: Accuracy, Precision, Recall, F1-Score, ROC-AUC
-
-## Technologies Used
-
-- **Python 3.7+**: Programming language
-- **pandas**: Data manipulation and analysis
-- **numpy**: Numerical computing
-- **scikit-learn**: Machine learning library
-- **matplotlib & seaborn**: Data visualization
-- **Streamlit**: Web application framework
-- **joblib**: Model serialization
-
-## How to Contribute
-
-Contributions are welcome! Feel free to:
-- Report bugs or suggest improvements
-- Fork the repository and create pull requests
-- Improve documentation or add new features
-
-## License
-
-This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
-
-## Author
-
-**Sahil Gaikwad** ([GitHub](https://github.com/sahil2003-ai))
-
-## Acknowledgments
-
-- Titanic dataset source: Kaggle
-- Inspired by classic machine learning classification problems
-- Built with modern Python ML tools and best practices
-
----
-
-## Live Application
-
-Try the live application here: [Titanic Survival Predictor App](https://titanic-survival-predictor-zvf5nhdj2vpmdcuaqbtwaz.streamlit.app/)
-
-The app is hosted on Streamlit Cloud and allows you to make real-time predictions by inputting passenger information.
-
-**Last Updated**: December 2025
+## Recommended Improvements
+Add a reproducible requirements file, dataset source, model metrics, screenshots, and a clear explanation of the train/test split.
