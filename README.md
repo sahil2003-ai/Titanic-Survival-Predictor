@@ -47,10 +47,12 @@ This project demonstrates how a supervised learning pipeline can turn passenger 
 
 ## 📂 Dataset
 
-Titanic_train.csv and Titanic_test.csv are present. Confirm columns, target availability, and any competition/data source details from the files.
+The repository CSV files were inspected: `Titanic_train.csv` contains **891 rows × 12 columns**, and `Titanic_test.csv` contains **418 rows × 11 columns**.
 
-- **Privacy and licensing:** Check source terms and avoid publishing personal, sensitive, or restricted data.
-- **Preprocessing:** Follow the actual SQL/notebook/report implementation; do not assume cleaning steps or row counts that have not been verified.
+- **Training target:** `Survived`.
+- **Features include:** passenger class, sex, age, siblings/spouses, parents/children, ticket, fare, cabin, and embarkation port.
+- The test file has no `Survived` column, as expected for a prediction dataset.
+- Document the original dataset source and reuse terms.
 
 ## 🛠️ Tech Stack
 
@@ -108,13 +110,14 @@ Run streamlit run app.py from the repository folder after installing dependencie
 
 ## 📊 Results and Insights
 
-### Key Findings
+### Verified dataset dimensions
 
-Add metrics only after reproducing them on a documented holdout split. Avoid reporting training metrics as generalization performance.
+| File | Rows | Columns |
+|---|---:|---:|
+| `Titanic_train.csv` | 891 | 12 |
+| `Titanic_test.csv` | 418 | 11 |
 
-### Evaluation
-
-For analytics projects, reconcile key totals and document metric definitions. For ML projects, report the baseline, split strategy, relevant metrics, and held-out evaluation results. Do not include unverified scores or business impact claims.
+The notebook contains training/EDA steps, but a reproducible held-out evaluation metric was not verified in this review. Do not claim model accuracy until the split strategy, preprocessing, and evaluation are rerun. Compare against a simple baseline and fit preprocessing only on training data.
 
 ## 🖼️ Screenshots
 
@@ -128,8 +131,9 @@ No image files were confirmed for this repository during this update. If you hav
 
 ## ⚠️ Limitations
 
-- Historical educational data does not imply real-world causal prediction.
-- Performance depends on split strategy and preprocessing; no metrics are asserted here.
+- Dataset dimensions were verified from the repository CSV contents.
+- Model accuracy was not verified from a reproducible held-out evaluation in this review.
+- This is a historical educational dataset and should not be generalized to real-world survival prediction.
 
 ## 🚀 Future Improvements
 
