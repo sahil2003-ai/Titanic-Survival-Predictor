@@ -1,158 +1,85 @@
 # Titanic Survival Predictor
 
-> Educational classification project with a Streamlit interface for exploring predictions on the historical Titanic dataset.
+A supervised-learning portfolio project that explores passenger survival classification and exposes predictions through a Streamlit interface.
 
-![Status](https://img.shields.io/badge/Status-Portfolio--Project-blue)
+## Project files
 
-## 📌 Table of Contents
-
-- [Overview](#overview)
-- [Problem Statement](#problem-statement)
-- [Objectives](#objectives)
-- [Features](#features)
-- [Dataset](#dataset)
-- [Tech Stack](#tech-stack)
-- [Project Workflow](#project-workflow)
-- [Repository Structure](#repository-structure)
-- [Installation](#installation)
-- [Usage](#usage)
-- [Results and Insights](#results-and-insights)
-- [Screenshots](#screenshots)
-- [Challenges and Solutions](#challenges-and-solutions)
-- [Limitations](#limitations)
-- [Future Improvements](#future-improvements)
-- [What I Learned](#what-i-learned)
-- [Author](#author)
-- [License](#license)
-
-## 📖 Overview
-
-Educational classification project with a Streamlit interface for exploring predictions on the historical Titanic dataset. This README documents the intended workflow and the files available in the repository. Verify all outputs against the current code and data before using them as evidence.
-
-## 🎯 Problem Statement
-
-This project demonstrates how a supervised learning pipeline can turn passenger attributes into a model prediction.
-
-## 🎯 Objectives
-
-- Prepare features for classification.
-- Evaluate a model on held-out data.
-- Expose inference through a simple interface.
-
-## ✨ Features
-
-- Notebook-based EDA and training.
-- Saved model file and Streamlit app.
-- Requirements file for dependencies.
-
-## 📂 Dataset
-
-The repository CSV files were inspected: `Titanic_train.csv` contains **891 rows × 12 columns**, and `Titanic_test.csv` contains **418 rows × 11 columns**.
-
-- **Training target:** `Survived`.
-- **Features include:** passenger class, sex, age, siblings/spouses, parents/children, ticket, fare, cabin, and embarkation port.
-- The test file has no `Survived` column, as expected for a prediction dataset.
-- Document the original dataset source and reuse terms.
-
-## 🛠️ Tech Stack
-
-| Technology | Purpose |
+| File | Purpose |
 |---|---|
-| Python | Model workflow |
-| pandas | Data handling |
-| scikit-learn | Preprocessing and classification |
-| Streamlit | Interactive app |
+| `Titanic_train.csv` | Labeled training dataset |
+| `Titanic_test.csv` | Test records without survival labels |
+| `Titanic Survival Predictor.ipynb` | EDA, preprocessing, and model training |
+| `app.py` | Streamlit application |
+| `model.pkl` | Saved model artifact |
+| `requirements.txt` | Python dependencies |
+| `APP_LINK.md` | Deployment information, if current |
 
-## 🔄 Project Workflow
+## Dataset metrics
 
-1. Install dependencies from requirements.txt in a virtual environment.
-2. Inspect train/test schemas and identify the target and input features.
-3. Run Titanic Survival Predictor.ipynb from top to bottom.
-4. Split training data before fitting imputers or encoders to avoid leakage.
-5. Train the implemented classifier and compare it with a simple baseline.
-6. Evaluate on held-out data using suitable classification metrics.
-7. Confirm app.py and model.pkl use matching preprocessing and feature order.
-8. Run streamlit run app.py and test representative inputs.
+Saved notebook output and the repository CSV files show:
 
-## 🗂️ Repository Structure
-
-```text
-Titanic-Survival-Predictor/
-├── Titanic Survival Predictor.ipynb
-├── Titanic_train.csv
-├── Titanic_test.csv
-├── app.py
-├── model.pkl
-├── requirements.txt
-└── APP_LINK.md
-└── README.md
-```
-
-The list above highlights known project files and folders; inspect the repository for the complete current structure.
-
-## ⚙️ Installation
-
-### Prerequisites
-
-- Install the tools listed in the Tech Stack that apply to this project.
-- For Python projects, use a Python version compatible with the dependencies actually imported by the code.
-- For Power BI projects, use Power BI Desktop.
-
-### Setup
-
-git clone https://github.com/sahil2003-ai/Titanic-Survival-Predictor.git; cd Titanic-Survival-Predictor; python -m venv .venv; activate the environment; pip install -r requirements.txt
-
-Do not run generic commands that do not match the files in this repository. Confirm the data paths, database dialect, and package versions before execution.
-
-## ▶️ Usage
-
-Run streamlit run app.py from the repository folder after installing dependencies.
-
-## 📊 Results and Insights
-
-### Verified dataset dimensions
-
-| File | Rows | Columns |
+| Metric | Training file | Test file |
 |---|---:|---:|
-| `Titanic_train.csv` | 891 | 12 |
-| `Titanic_test.csv` | 418 | 11 |
+| Rows | 891 | 418 |
+| Columns | 12 | 11 |
+| Target field | `Survived` | Not present |
 
-The notebook contains training/EDA steps, but a reproducible held-out evaluation metric was not verified in this review. Do not claim model accuracy until the split strategy, preprocessing, and evaluation are rerun. Compare against a simple baseline and fit preprocessing only on training data.
+In the training data, 342 passengers survived and 549 did not, giving a training-set survival proportion of **38.38%**. The training notebook reports missing values in Age (177), Cabin (687), and Embarked (2); the other listed fields have no missing values in the saved output.
 
-## 🖼️ Screenshots
+## Modeling workflow
 
-No image files were confirmed for this repository during this update. If you have screenshots, upload them into an `images/` folder, then embed each real path here with a short caption. Do not use placeholder image paths.
+1. Inspect the training and test schemas.
+2. Explore target balance and missing data.
+3. Drop identifier/text fields selected by the notebook and impute missing Age values using the training median.
+4. Encode categorical features and train the implemented classifier.
+5. Save the model and expose inference through Streamlit.
+6. Validate that the app uses the same feature order and preprocessing assumptions as training.
 
-## 🧩 Challenges and Solutions
+## Reported training-set performance
 
-| Challenge | Solution / validation approach |
-|---|---|
-| Consistent preprocessing between training and app | Ensure the same fitted transformations and feature order are used for inference. |
+The saved notebook reports the following **in-sample training metrics**:
 
-## ⚠️ Limitations
+| Metric | Result |
+|---|---:|
+| Accuracy | 80.02% |
+| Precision | 76.11% |
+| Recall | 69.88% |
+| F1-score | 72.87% |
 
-- Dataset dimensions were verified from the repository CSV contents.
-- Model accuracy was not verified from a reproducible held-out evaluation in this review.
-- This is a historical educational dataset and should not be generalized to real-world survival prediction.
+**Important:** These are measurements on the same 891 rows used to fit the model, not a held-out validation or test score. They can overstate generalization and should not be presented as production performance. The 418-row test CSV has no target labels, so it cannot independently provide accuracy. A defensible next step is a stratified train/validation split or cross-validation on the labeled training data, followed by a single final refit if required.
 
-## 🚀 Future Improvements
+The model workflow also calculates a ROC curve using training predictions; that AUC is not a held-out estimate and is not promoted here as such.
 
-- [ ] Add an app screenshot under images/.
-- [ ] Document the train/test split and verified metrics.
-- [ ] Add tests for feature order and input validation.
+## Run locally
 
-## 📚 What I Learned
+1. Create a Python virtual environment.
+2. Install dependencies:
 
-- Classification pipelines and evaluation.
-- Serving model predictions through Streamlit.
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-## 👤 Author
+3. Launch the application from the repository root:
 
-**Sahil Gaikwad**
+   ```bash
+   streamlit run app.py
+   ```
 
-- GitHub: [sahil2003-ai](https://github.com/sahil2003-ai)
-- LinkedIn: [Sahil Gaikwad](https://www.linkedin.com/in/sahil-gaikwad-a76b7224a/)
+4. Check that the saved model loads and that input fields match the training feature schema.
 
-## 📄 License
+Run the notebook separately in Jupyter if you want to reproduce preprocessing and training.
 
-A LICENSE file exists; review it for reuse terms.
+## Limitations
+
+- Training metrics are in-sample only.
+- Passenger survival is a historical classification exercise, not a causal analysis.
+- Dataset source and license should be documented.
+- The saved model and application should be tested together after any feature/preprocessing changes.
+
+## Skills demonstrated
+
+Python, pandas, exploratory data analysis, missing-value handling, categorical encoding, logistic/classification modeling as implemented, evaluation metrics, model serialization, and Streamlit.
+
+## Author
+
+Sahil Gaikwad · [GitHub](https://github.com/sahil2003-ai) · [LinkedIn](https://www.linkedin.com/in/sahil-gaikwad-a76b7224a/)
