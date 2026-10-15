@@ -1,46 +1,27 @@
 # Titanic Survival Predictor
 
-A machine-learning learning project that estimates Titanic passenger survival probability using a scikit-learn classification workflow and a Streamlit interface.
+A learning project that trains a classification model and provides an interactive Streamlit interface for exploring survival predictions on the historical Titanic dataset.
 
-## Project Overview
-The project covers data preparation, exploratory analysis, model training, evaluation, and interactive predictions from passenger attributes.
+## Step-by-step workflow
 
-## Features Documented
-- Missing-value handling with `SimpleImputer`
-- Categorical feature encoding
-- Exploratory plots and statistical summaries
-- Logistic Regression classification
-- Evaluation using accuracy, precision, recall, F1-score, and ROC analysis
-- Streamlit interface for entering passenger attributes and viewing a prediction
+1. Install dependencies from `requirements.txt` in a virtual environment.
+2. Inspect `Titanic_train.csv` and `Titanic_test.csv`; identify the target, input features, and missing values.
+3. Open `Titanic Survival Predictor.ipynb` and run the data exploration and cleaning cells.
+4. Fit imputers and encoders on training data only to avoid leakage.
+5. Train the Logistic Regression model and compare it with a simple baseline.
+6. Evaluate with a held-out set using accuracy, precision, recall, F1-score, and ROC-AUC where appropriate.
+7. Confirm the saved `model.pkl` and `app.py` use matching preprocessing and feature order.
+8. Run `streamlit run app.py` and test a few inputs.
+9. Document the actual metrics, split strategy, and limitations.
 
-## Technology
-- Python
-- pandas and NumPy
-- scikit-learn
-- Matplotlib and Seaborn
-- Streamlit
+## Tools
+Python, pandas, scikit-learn, Streamlit, Jupyter Notebook.
 
-Confirm exact dependencies from the project files before installing.
-
-## Run Locally
-1. Clone this repository and enter its directory.
-2. Create and activate a virtual environment.
-3. Install the dependencies listed in the repository (add a `requirements.txt` if missing).
-4. Check the notebook for the intended training and preprocessing workflow.
-5. Run the app with `streamlit run app.py` if `app.py` is present and configured.
-
-## Evaluation Checklist
-- Split data before fitting preprocessing steps.
-- Fit imputers and encoders on training data only.
-- Compare with a simple baseline.
-- Report metrics from a held-out test set.
-- Check that the saved model and app use the same feature order and preprocessing.
-
-## Skills Demonstrated
-Classification, preprocessing, EDA, model evaluation, model serialization, and building a simple ML interface.
+## Screenshots
+No image files were found in the repository root. Add an app screenshot in `images/` and embed it here.
 
 ## Limitations
-This is a historical educational dataset. Predictions are demonstrations of a model, not causal explanations of survival or a generalizable safety tool.
+This is a historical educational dataset; model predictions are not causal explanations and may not generalize beyond the dataset.
 
-## Recommended Improvements
-Add a reproducible requirements file, dataset source, model metrics, screenshots, and a clear explanation of the train/test split.
+## Next improvements
+Add a screenshot, model metrics from a reproducible test set, and exact setup instructions.
